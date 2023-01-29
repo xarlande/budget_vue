@@ -4,8 +4,8 @@
       <template v-if="isEmpty">
         <div
             class="list-item"
-            v-for="(item, prop) in list"
-            :key="prop"
+            v-for="(item, idx) in list"
+            :key="idx"
         >
           <span class="budget-comment">{{ item.comment }}</span>
           <span class="budget-value">{{item.value}}</span>
@@ -20,12 +20,7 @@
 <script>
 export default {
   name: "BudgetList",
-  props: {
-    list: {
-      type: Object,
-      default: () => ({})
-    }
-  },
+  props: ['list'],
   data() {
     return {
       header: "Budget  List",
@@ -33,9 +28,8 @@ export default {
     }
   },
   methods: {
-    budgetRemove(i){
-      console.log(this.$emit('budgetRemove', i)
-      )
+    budgetRemove(id){
+      this.$emit('budgetRemove', id)
     }
   }
   ,
