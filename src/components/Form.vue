@@ -23,6 +23,7 @@
 <script>
 export default {
   name: "Form",
+  emits: ['submitForm'],
   data() {
     return {
       formData: {

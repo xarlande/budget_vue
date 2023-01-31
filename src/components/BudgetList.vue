@@ -2,7 +2,7 @@
   <div class="budget-list-wrap">
     <el-card :header="header">
       <template v-if="isEmpty">
-        <BudgetListItem :list="list" @budgetItemRemove="budgetRemove"/>
+        <BudgetListItem :list="list" @budget-item-remove="budgetRemove"/>
       </template>
       <ElAlert v-else type="info" :title="emptyTitle" :closable="false" show-icon effect="light"/>
     </el-card>

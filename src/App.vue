@@ -1,7 +1,7 @@
 <template>
   <TotalBalance :total="totalBalance"/>
-  <Form @submitForm="onFormSubmit"/>
-  <BudgetList :list="list" @budgetRemove="onDeleteItem"/>
+  <Form @submit-form="onFormSubmit"/>
+  <BudgetList :list="list" @budget-remove="onDeleteItem"/>
 </template>
 
 <script>
