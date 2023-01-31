@@ -43,7 +43,6 @@ export default defineComponent({
         ...data,
         id: String(Math.random())
       }
-
       this.list.push(newObj)
     }
   }

@@ -2,15 +2,7 @@
   <div class="budget-list-wrap">
     <el-card :header="header">
       <template v-if="isEmpty">
-        <div
-            class="list-item"
-            v-for="(item, idx) in list"
-            :key="idx"
-        >
-          <span class="budget-comment">{{ item.comment }}</span>
-          <span class="budget-value">{{item.value}}</span>
-          <ElButton type="danger" size="default" @click="budgetRemove(item.id)">Delete</ElButton>
-        </div>
+        <BudgetListItem :list="list" @budgetItemRemove="budgetRemove"/>
       </template>
       <ElAlert v-else type="info" :title="emptyTitle" :closable="false" show-icon effect="light"/>
     </el-card>
@@ -18,8 +10,12 @@
 </template>
 
 <script>
+import BudgetListItem from "@/components/BudgetListItem.vue";
+
 export default {
   name: "BudgetList",
+  components: {BudgetListItem},
+  emits: ['budgetRemove'],
   props: ['list'],
   data() {
     return {
@@ -27,7 +23,7 @@ export default {
       emptyTitle: 'Empty List'
     }
   },
-  methods: {
+  methods:{
     budgetRemove(id){
       this.$emit('budgetRemove', id)
     }
@@ -45,15 +41,5 @@ export default {
 .budget-list-wrap {
   margin: 20px auto 0;
   max-width: 500px;
-}
-.list-item{
-  display: flex;
-  align-items: center;
-  padding: 10px 15px;
-}
-.budget-value{
-  font-weight: bold;
-  margin-left: auto;
-  margin-right: 20px;
 }
 </style>
