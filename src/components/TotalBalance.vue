@@ -13,14 +13,12 @@
 <script>
 export default {
   name: "TotalBalance",
-  emits: ['TotalValue'],
   props: {
     total: {
       type: Number,
       default: 0
     }
   },
-  computed: {}
 }
 </script>
 
