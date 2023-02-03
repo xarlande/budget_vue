@@ -16,13 +16,13 @@ export default defineComponent({
     return {
       list: [
         {
-          type: 'INCOME',
+          type: 'Income',
           value: 100,
           comment: 'Some comment',
           id: 1
         },
         {
-          type: 'INCOME',
+          type: 'OUTCOME',
           value: -62,
           comment: 'Some comment',
           id: 2
@@ -38,14 +38,14 @@ export default defineComponent({
     onDeleteItem(i) {
       this.list = this.list.filter(item => item.id !== i)
     },
-    onFormSubmit(data){
+    onFormSubmit(data) {
       const newObj = {
         ...data,
         id: String(Math.random())
       }
       this.list.push(newObj)
     }
-  }
+  },
 })
 </script>
 

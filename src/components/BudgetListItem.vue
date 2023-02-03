@@ -5,7 +5,15 @@
       :key="idx"
   >
     <span class="budget-comment">{{ item.comment }}</span>
-    <span class="budget-value">{{item.value}}</span>
+    <span class="budget-value">{{ item.value }}</span>
+    <div class="plus-and-minus">
+      <el-icon v-if="item.type === 'Income'">
+        <Plus/>
+      </el-icon>
+      <el-icon v-else>
+        <Minus/>
+      </el-icon>
+    </div>
     <ElButton type="danger" size="default" @click="budgetItemRemove(item.id)">Delete</ElButton>
   </div>
 </template>
@@ -16,7 +24,7 @@ export default {
   props: ['list'],
   emits: ['budgetItemRemove'],
   methods: {
-    budgetItemRemove(id){
+    budgetItemRemove(id) {
       this.$emit('budgetItemRemove', id)
     }
   }
@@ -24,14 +32,19 @@ export default {
 </script>
 
 <style scoped>
-.list-item{
+.list-item {
   display: flex;
   align-items: center;
   padding: 10px 15px;
 }
-.budget-value{
+
+.budget-value {
   font-weight: bold;
   margin-left: auto;
+  margin-right: 20px;
+}
+
+.plus-and-minus {
   margin-right: 20px;
 }
 </style>

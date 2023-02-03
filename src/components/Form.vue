@@ -2,12 +2,12 @@
   <div class="input_form">
     <el-card>
       <el-form :model="formData" ref="addItemForm" :rules="rules" label-position="top">
-        <el-form-item label="Type" prop="type">
-          <el-select v-model="formData.type" placeholder="Choose type...">
-            <el-option label="Income" value="INCOME"/>
-            <el-option label="Outcome" value="OUTCOME"/>
-          </el-select>
-        </el-form-item>
+        <!--        <el-form-item label="Type" prop="type">-->
+        <!--          <el-select v-model="formData.type" placeholder="Choose type...">-->
+        <!--            <el-option label="Income" value="Income"/>-->
+        <!--            <el-option label="Outcome" value="Outcome"/>-->
+        <!--          </el-select>-->
+        <!--        </el-form-item>-->
         <el-form-item label="Comment" prop="comment">
           <el-input v-model="formData.comment"/>
         </el-form-item>
@@ -41,7 +41,12 @@ export default {
   methods: {
     onSubmit() {
       this.$refs.addItemForm.validate((valid) => {
-        if(valid){
+        if (valid) {
+          if (this.formData.value > 0) {
+            this.formData.type = 'Income'
+          } else {
+            this.formData.type = 'Outcome'
+          }
           this.$emit('submitForm', {...this.formData})
           this.$refs.addItemForm.resetFields()
         }
