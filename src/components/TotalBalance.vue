@@ -1,11 +1,5 @@
 <template>
-  <div class="total-value green" v-if="total>0">
-    Balance: {{ total }}
-  </div>
-  <div class="total-value red" v-else-if="total<0">
-    Balance: {{ total }}
-  </div>
-  <div class="total-value null" v-else>
+  <div :class="totalValue" class="total-value">
     Balance: {{ total }}
   </div>
 </template>
@@ -19,6 +13,14 @@ export default {
       default: 0
     }
   },
+  computed: {
+    totalValue(){
+      return {
+        'green': this.total>0,
+        'red': this.total<0
+      }
+    }
+  }
 }
 </script>
 
@@ -32,10 +34,6 @@ export default {
 
 .green {
   color: #096c09;
-}
-
-.null {
-  color: black;
 }
 
 .red {
